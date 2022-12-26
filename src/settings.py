@@ -14,4 +14,10 @@ WEBHOOK_URL = f'{WEBHOOK_HOST}{WEBHOOK_PATH}'
 
 # webserver settings
 WEBAPP_HOST = '0.0.0.0'
-WEBAPP_PORT = int(os.getenv('PORT'))
+
+WEBAPP_PORT: int
+if os.getenv('PORT') is not None:
+    WEBAPP_PORT = int(os.getenv('PORT'))
+else:
+    WEBAPP_PORT = 0
+    print("Port is not set. Setting port to 0")
